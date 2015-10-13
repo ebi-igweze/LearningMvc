@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PhotoGallery.Controllers
+namespace LearningMVC.Controllers
 {
-    public class AccountController : Controller
+    public class HomeController : Controller
     {
-        // GET: Account
+        // GET: Home
         public ActionResult Index()
         {
             return View();
