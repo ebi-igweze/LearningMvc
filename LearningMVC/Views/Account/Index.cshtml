@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../newLogin.css">
+</head>
+
+<body>
+    <form name="login" id="login" novalidate>
+        <h1>Log In</h1>
+
+        <fieldset id="inputs">
+            <input id="username" type="email" autofocus required placeholder="your email" />
+            <input id="password" type="password" autofocus required placeholder="your password" />
+        </fieldset>
+        <fieldset id="actions">
+            <input id="submit" type="submit" value="Log in" />
+            <a>Not a member?</a><a href="#register">Register</a>
+        </fieldset>
+    </form>
+</body>
+
+</html>

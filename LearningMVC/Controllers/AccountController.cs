@@ -13,5 +13,11 @@ namespace LearningMVC.Controllers
         {
             return View();
         }
+
+        public ActionResult Register(ApplicationUser model) {
+
+            //TODO  :implement some validation
+            return View(moel);
+        }
     }
 }
