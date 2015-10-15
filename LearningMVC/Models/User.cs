@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using LearningMVC.Core.Model;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,12 +8,21 @@ using System.Web;
 
 namespace LearningMVC.Models
 {
-    public class UserModel: IUser<string>
+    public class User: UserModel, IUser<string>
     {
-        public int UserID { get; set; }
+        public User()
+        {
+
+        }
+        public User(UserModel model)
+        {
+            UserID = model.UserID;
+            Email = model.Email;
+            Password = model.Password;
+        }
+
         [EmailAddress]
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public override string Email { get; set; }
         public bool RememberMe { get; set; }
 
         public string Id => UserID.ToString();
