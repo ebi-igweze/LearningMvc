@@ -5,59 +5,79 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using LearningMVC.Models;
+using LearningMVC.Core.Managers;
 
 namespace LearningMVC.Security
 {
-    public class UserStore : IUserStore<UserModel>, IUserRoleStore<UserModel>
+    public class UserStore : IUserStore<User>, IUserRoleStore<User>, IUserPasswordStore<User>
     {
+        private UserManager _manager;
+        public UserStore(UserManager manager)
+        {
+            _manager = manager;
+        }
 
+        public Task AddToRoleAsync(User user, string roleName)
+        {
+            return Task.Run(() => _manager.AddToRole(user,roleName));
+        }
 
-        public Task AddToRoleAsync(UserModel user, string roleName)
+        public Task CreateAsync(User user)
         {
             throw new NotImplementedException();
         }
 
-        public Task CreateAsync(UserModel user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAsync(UserModel user)
+        public Task DeleteAsync(User user)
         {
             throw new NotImplementedException();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public Task<UserModel> FindByIdAsync(string userId)
+        public Task<User> FindByIdAsync(string userId)
+        {
+            return Task.FromResult( new User( _manager.FindByID(userId)));
+        }
+
+        public Task<User> FindByNameAsync(string userName)
         {
             throw new NotImplementedException();
         }
 
-        public Task<UserModel> FindByNameAsync(string userName)
+        public Task<string> GetPasswordHashAsync(User user)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IList<string>> GetRolesAsync(UserModel user)
+        public Task<IList<string>> GetRolesAsync(User user)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> IsInRoleAsync(UserModel user, string roleName)
+        public Task<bool> HasPasswordAsync(User user)
         {
             throw new NotImplementedException();
         }
 
-        public Task RemoveFromRoleAsync(UserModel user, string roleName)
+        public Task<bool> IsInRoleAsync(User user, string roleName)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(UserModel user)
+        public Task RemoveFromRoleAsync(User user, string roleName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SetPasswordHashAsync(User user, string passwordHash)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(User user)
         {
             throw new NotImplementedException();
         }
